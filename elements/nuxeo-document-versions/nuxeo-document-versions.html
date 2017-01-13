@@ -237,12 +237,12 @@ Contributors:
 
         _showLatest: function() {
           this._hideList();
-          page('/browse' + this.document.path + '@view');
+          this.fire('document-version-changed', { isVersion: false, doc: this.document });
         },
 
         _showVersion: function(e) {
           this._hideList();
-          page('/doc/' + e.model.item.uid);
+          this.fire('document-version-changed', { isVersion: true, uid: e.model.item.uid });
         },
 
         _labelLatest: function(doc) {

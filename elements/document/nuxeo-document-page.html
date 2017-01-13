@@ -321,6 +321,18 @@ Contributors:
           }
         },
 
+        listeners: {
+          'document-version-changed': '_documentVersionChanged'
+        },
+
+        _documentVersionChanged: function(e) {
+          if (e.detail.isVersion) {
+            page('/doc/' + e.detail.uid);
+          } else {
+            page('/browse' + e.detail.doc.path + '@view');
+          }
+        },
+
         _documentChanged: function() {
           if (this.document) {
             this.workflows = this.document.contextParameters.runningWorkflows;
